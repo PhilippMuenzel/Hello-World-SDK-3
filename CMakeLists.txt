@@ -32,8 +32,8 @@ else()
         APL=0
         LIN=0
         IBM=1)
-    set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG} -Zi -MTd)
-    set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_CXX_FLAGS_RELEASE} -MT)
+    set(PLATFORM_DEBUG_OPTIONS "-MTd")
+    set(PLATFORM_RELEASE_OPTIONS "-MT")
 endif()
 endif()
 
@@ -56,6 +56,8 @@ set(SOURCES
 add_library(Hello-World MODULE ${SOURCES})
 
 target_compile_options(Hello-World PRIVATE ${PLATFORM_COMPILE_OPTIONS})
+target_compile_options(Hello-World PUBLIC "$<$<CONFIG:DEBUG>:${PLATFORM_DEBUG_OPTIONS}>")
+target_compile_options(Hello-World PUBLIC "$<$<CONFIG:RELEASE>:${PLATFORM_RELEASE_OPTIONS}>")
 target_compile_definitions(Hello-World PRIVATE ${DEFINITIONS})
 
 if (APPLE)
@@ -73,8 +75,8 @@ else()
 if(LINUX)
     target_compile_options(Hello-World PRIVATE "-fvisibility=hidden")
 else()
-    target_link_libraries(Hello-World "-l XPWidgets_64")
-    target_link_libraries(Hello-World "-l XPLM_64")
+    target_link_libraries(Hello-World "SDK/Libraries/Win/XPWidgets_64")
+    target_link_libraries(Hello-World "SDK/Libraries/Win/XPLM_64")
 endif()
 endif()
 
