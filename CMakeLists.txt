@@ -44,8 +44,8 @@ set(DEFINITIONS
     XPLM301=1
     ${PLATFORM_CORE_DEFINITIONS})
 
-include_directories(${CMAKE_SOURCE_DIR}/../SDK/CHeaders/XPLM
-                    ${CMAKE_SOURCE_DIR}/../SDK/CHeaders/Widgets
+include_directories(${CMAKE_SOURCE_DIR}/SDK/CHeaders/XPLM
+                    ${CMAKE_SOURCE_DIR}/SDK/CHeaders/Widgets
                     ${PLATFORM_INCLUDE_DIRECTORIES})
 
 
@@ -63,7 +63,7 @@ if (APPLE)
     target_link_libraries(Hello-World "-framework CoreFoundation")
     target_link_libraries(Hello-World "-framework XPWidgets")
     target_link_libraries(Hello-World "-framework XPLM")
-    set_target_properties(Hello-World PROPERTIES LINK_FLAGS "-Wl,-F/Library/Frameworks, -Wl,-F../SDK/Libraries/Mac\
+    set_target_properties(Hello-World PROPERTIES LINK_FLAGS "-Wl,-F/Library/Frameworks, -Wl,-FSDK/Libraries/Mac\
     -Wl,-exported_symbol -Wl,_XPluginStart\
     -Wl,-exported_symbol -Wl,_XPluginEnable\
     -Wl,-exported_symbol -Wl,_XPluginReceiveMessage\
