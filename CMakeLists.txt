@@ -17,6 +17,7 @@ endif()
 
 if(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET 10.12)
+    set(CMAKE_OSX_ARCHITECTURES "x86_64")
     set(PLATFORM_CORE_DEFINITIONS
         APL=1
         LIN=0
