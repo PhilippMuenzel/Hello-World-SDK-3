@@ -65,7 +65,7 @@ if (APPLE)
     target_link_libraries(Hello-World "-framework CoreFoundation")
     target_link_libraries(Hello-World "-framework XPWidgets")
     target_link_libraries(Hello-World "-framework XPLM")
-    set_target_properties(Hello-World PROPERTIES LINK_FLAGS "-Wl,-F/Library/Frameworks, -Wl,-FSDK/Libraries/Mac\
+    set_target_properties(Hello-World PROPERTIES LINK_FLAGS "-Wl,-F/Library/Frameworks, -Wl,-F${CMAKE_SOURCE_DIR}/SDK/Libraries/Mac\
     -Wl,-exported_symbol -Wl,_XPluginStart\
     -Wl,-exported_symbol -Wl,_XPluginEnable\
     -Wl,-exported_symbol -Wl,_XPluginReceiveMessage\
